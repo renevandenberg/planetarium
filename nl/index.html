@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <title>Eisinga's Digitale Planetarium online model in 2D</title>
+        <base target="_blank">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+        <link rel="manifest" href="../site.webmanifest">
+        <script src="../script/main.js"></script>
+        <link rel="stylesheet" href="../style/main.css">
+        <meta charset="utf-8">
+        <link rel="alternate" hreflang="en" href="../en">
+    </head>
+    <body onload="init() ">
+        <header>
+            <h1>Eisinga's Digitale Planetarium</h1>
+            <form onsubmit="return false">
+                <label>
+                    Datum:
+                    <input
+                           type="datetime-local"
+                           name="observation_time"
+                           id="observation_time"
+                           min="1774-05-08T00:00"
+                           max="2774-05-08T00:00"
+                           value="1774-05-08T12:00"
+                           onchange="updateOrbits();"
+                           required>
+                </label>
+                <label>Snelheid:
+                <select id="speed" onchange="updateInterval()">
+                    <option value="0">0x</option>
+                    <option value="1" selected>1x</option>
+                    <option value="10">10x</option>
+                    <option value="100">100x</option>
+                    <option value="1000">1.000x</option>
+                    <option value="10000">10.000x</option>
+                    <option value="100000">100.000x</option>
+                    <option value="1000000">1.000.000x</option>
+                    <option value="10000000">10.000.000x</option>
+                </select>
+                </label>
+                <label>
+                Posities volgens:
+                <select id="reference_system" onchange="updateReferenceSystem();">
+                    <option value="eisinga">Eisinga-1781</option>
+                    <option value="de-lalande">De Lalande-1781</option>
+                </select>
+                </label>
+                <label>Kleurenschema: <input id="color" type="color" value="#7E9CBB" onchange="updateColor()"></label>
+                <label>Speciale dagen:</label>
+                <button onclick="setObservationTime('1774-05-08T12:00');">Parade 1774</button>
+                <button onclick="setReferenceSystem('de-lalande'); setObservationTime('2025-01-28T12:00');">Parade 2025</button>
+                <button onclick="setReferenceSystem('de-lalande'); setObservationTime((new Date()).toISOString().substring(0,11)+'12:00');">De planeten vandaag</button>
+                <button onclick="setReferenceSystem('de-lalande'); setObservationTime('2040-09-08T12:00');">Parade 2040</button>
+                <button onclick="setReferenceSystem('de-lalande'); setObservationTime('2080-03-15T12:00');">Parade 2080</button>
+                <button onclick="setReferenceSystem('de-lalande'); setObservationTime('2492-05-06T12:00');">Parade 2492</button>
+            </form>
+        </header>
+        <main>
+            <img src="../images/planetarium.svg" style="width:100%;height:100%" alt="Planetarium kleureffecten">
+            <svg style="position: absolute; left:0; top: 0; width:100%;height:100%" id="orbits" viewBox="0 0 100 100">
+                <defs>
+                    <radialGradient id="planet-shadow" cx="0.5" cy="0.25" r="0.8">
+                        <stop offset="40%" stop-color="gold" />
+                        <stop offset="70%" stop-color="goldenrod" />
+                    </radialGradient>
+                </defs>
+                
+                <image href="../images/solar-system.png" width="100%" height="100%" x="0" y="0" />
+                
+                <circle id="Saturn" cx="0" cy="0" r="0"><title>Saturnus</title></circle>
+                <circle id="Jupiter" cx="0" cy="0" r="0"><title>Jupiter</title></circle>
+                <circle id="Mars" cx="0" cy="0" r="0"><title>Mars</title></circle>
+                <circle id="Earth" cx="0" cy="0" r="0"><title>Aarde</title></circle>
+                <circle id="Venus" cx="0" cy="0" r="0"><title>Venus</title></circle>
+                <circle id="Mercury" cx="0" cy="0" r="0"><title>Mercurius</title></circle>
+            </svg>
+        </main>
+        <footer>
+            <label>Aantal dagen sinds 21-02-1781:<output id="numberOfDays">0</output></label>
+            <label>Waarvan schrikkeldagen:<output id="numberOfLeapDays">0</output></label>
+            
+            <h2>Toelichting</h2>
+            
+            <p>Dit planetarium is een eenvoudige simulatie van het planetarium in Franeker. De hemellichamen zijn van binnen naar buiten: de zon, Mercurius, Venus, Aarde, Mars, Jupiter en Saturnus. </p>
+            
+            <p>De omloopsnelheden zijn zoals Eisinga die heeft benaderd, geijkt op de stand van de planeten in 1781. Omdat deze niet precies genoeg is om ook de heden&shy;daagse planeet&shy;posities te benaderen, is het mogelijk om terug te vallen op de omloop&shy;snelheden zoals De Lalande die heeft berekend, die nog altijd behoor&shy;lijk accuraat zijn.</p>
+            
+            <h2>Bronnen</h2>
+            
+            <h3>Omloopsnelheden</h3>
+            <ul>
+                <li>Planetarium-boek Eise Eisinga, 27-08-1928
+                    <ul>
+                        <li>E. Ha&shy;vin&shy;ga</li>
+                        <li>W. E. van Wijk</li>
+                        <li>J. F. M. G. d'Au&shy;me&shy;rie</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>Referentieposities planeten</h3>
+            <p> <a href="https://horizons.jpl.nasa.gov/">NASA Horizon</a></p>
+            
+            <h3>Colofon</h3>
+            <p>Broncode en nabewerking: <a href="https://renevdb.nl">Ren&eacute; van den Berg</a><br>Grafisch bronmateriaal: <a href="https://rijksmuseum.nl">Rijksmuseum</a><br>
+            Favicon: Flaticon.com</p>
+        </footer>
+    </body>
+</html>

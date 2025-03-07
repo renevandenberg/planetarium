@@ -1,0 +1,82 @@
+
+html, body{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: sans-serif;
+}
+body{
+    background-color: #7E9CBB;
+}
+main{
+    position: fixed;
+    display: block;
+    width: 100%;
+    max-width: 100vh;
+    aspect-ratio: 1 / 1;
+    z-index: 0;
+    right: 5vw;
+    top: 0;
+}
+a{
+    color: black;
+}
+h1{
+    color: black;
+    mix-blend-mode: overlay;
+    font-family: serif;
+}
+h2{
+    font-family: serif;
+}
+
+label, p, h2 {
+    display: block;
+    clear: both;
+    width: 400px;
+}
+label *{
+    float: right;
+    clear: right;
+}
+input, button, output, select, option{
+    padding: 2px;
+    font-size: 11pt;
+    font-family: sans-serif;
+    min-width: 150px;
+    text-align: center;
+}
+output{
+    background: rgba(255,255,255,0.5);
+    margin: 2px 0;
+}
+button{
+    background-color: black;
+    color: white;
+    border: 0;
+    margin: 2px 0;
+    padding: 6px;
+    min-width: 100px;
+}
+header, footer{
+    display: block;
+    padding: 10px;
+    margin: auto;
+    padding-right: 50vw;
+    width: 400px;
+}
+
+@media screen and (max-aspect-ratio: 16/9) {
+    header, footer, main{
+        display: block;
+        float: none;
+        position: relative;
+    }
+    main{
+        margin: auto;
+        right: auto;
+    }
+    header, footer{
+        padding: 10px;
+    }
+}
