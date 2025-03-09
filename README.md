@@ -9,5 +9,5 @@ Eisinga has built a planetarium in his own living room in Franeker and finished 
 - https://planetarium.theoxygent.nl
 
 # Notes
-- Source material based on a drawing retrieved from the Rijkmuseum (https://rijksmuseum.nl)
-- More information about the planetarium, UNESCO Heritage Site that can be visited: https://www.eisinga-planetarium.nl/
+- Source material based on a drawing retrieved from the Rijkmuseum: https://rijksmuseum.nl
+- More information about the planetarium, the UNESCO World Heritage Site that can be visited in The Netherlands: https://www.eisinga-planetarium.nl
