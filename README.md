@@ -1,4 +1,4 @@
-Eisinga has built a planetarium in his own living room in Franeker. This is a digital version of the core components
+Eisinga has built a planetarium in his own living room in Franeker and finished in 1781. This is a digital version of the core components
 
 # Features
 - Shows the positions of the planets that can be seen with the naked eye, at any date and time.
@@ -10,3 +10,4 @@ Eisinga has built a planetarium in his own living room in Franeker. This is a di
 
 # Notes
 - Source material based on a drawing retrieved from the Rijkmuseum (https://rijksmuseum.nl)
+- More information about the planetarium, UNESCO Heritage Site that can be visited: https://www.eisinga-planetarium.nl/
