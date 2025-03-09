@@ -2,7 +2,7 @@ Eisinga has built a planetarium in his own living room in Franeker. This is a di
 
 # Features
 - Shows the positions of the planets that can be seen with the naked eye, at any date and time.
-- Play in fast time
+- Play in real-time or in fast-time
   
 # Preview at
 - https://renevandenberg.github.io/planetarium/
